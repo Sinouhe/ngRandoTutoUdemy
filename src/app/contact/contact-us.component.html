@@ -1,0 +1,61 @@
+<h2>contactez nous</h2>
+
+<form #form="ngForm" (submit)="sendMessage(form)">
+    
+    <div    class="form-group" 
+            novalidate 
+            [class.has-error]="sujetSubject.invalid && sujetSubject.touched">
+        <label for="subject" class="control-label">Sujet</label>
+        <input  type='text'
+                #sujetSubject="ngModel"
+                ngModel
+                required
+                name="subject" 
+                class="form-control" 
+                placeholder="sujet" 
+                id="subject">
+        <div *ngIf="sujetSubject.invalid && sujetSubject.touched">sujet manquant</div>
+    </div>
+
+    <div    class="form-group"
+            novalidate 
+            [class.has-error]="msgSubject.invalid && msgSubject.touched">
+        <label for="message" class="control-label">message</label>
+        <textarea   type='text' 
+                    #msgSubject="ngModel"
+                    class="form-control" 
+                    placeholder="message" 
+                    ngModel
+                    required
+                    name="message"
+                    id="message">
+
+        </textarea>
+    </div>
+
+        <div    class="form-group"
+                novalidate 
+                [class.has-error]="itemSubject.invalid && itemSubject.touched">
+            <label for="service" class="control-label">Service</label>
+            <select class="form-control" 
+                    #itemSubject="ngModel"
+                    id="service"
+                    ngModel
+                    required
+                    name="service">
+                <option value="tech">technique</option>
+                <option value="sales">commercial</option>
+                <option value="guide">quide moyenne montage</option>
+            </select>
+        </div>
+    
+        <button type="submit" 
+                class="btn btn-primary"
+                [disabled]="form.invalid">
+                envoyer
+        </button>
+</form>
+
+From : {{ form.value | json }}
+<br>
+form : {{ form.valid }}

@@ -1,0 +1,15 @@
+<!--
+    <hr>
+<div *ngFor="let hike of hikes">
+    {{hike.name}}
+</div>
+-->
+    <div >
+          <a [routerLink]="['/']">Accueil</a>
+          <a [routerLink]="['/hikes']">Randonnées</a>
+          <a [routerLink]="['/contact']">Contact</a>
+          <a [routerLink]="['/map']">Carte</a>
+    </div>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
